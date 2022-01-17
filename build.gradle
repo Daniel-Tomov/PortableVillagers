@@ -1,4 +1,6 @@
-apply plugin: 'java'
+plugins {
+  id 'java-library'
+}
 
 repositories {
   maven {
@@ -23,12 +25,13 @@ repositories {
   maven { url = 'https://oss.sonatype.org/content/repositories/snapshots' }
   maven { url = 'https://oss.sonatype.org/content/repositories/central' }
   mavenLocal() // This is needed for CraftBukkit and Spigot.
+  mavenCentral()
 }
 
 dependencies {
   // Pick only one of these and read the comment in the repositories block.
-  //compileOnly 'org.spigotmc:spigot-api:1.18-R0.1-SNAPSHOT' // The Spigot API with no shadowing. Requires the OSS repo.
+  compileOnly 'org.spigotmc:spigot-api:1.18-R0.1-SNAPSHOT' // The Spigot API with no shadowing. Requires the OSS repo.
   //compileOnly 'org.bukkit:bukkit:1.18-R0.1-SNAPSHOT' // The Bukkit API with no shadowing.
-  compileOnly 'org.spigotmc:spigot:1.18-R0.1-SNAPSHOT' // The full Spigot server with no shadowing. Requires mavenLocal.
+  //compileOnly 'org.spigotmc:spigot:1.18-R0.1-SNAPSHOT' // The full Spigot server with no shadowing. Requires mavenLocal.
   //compileOnly 'org.bukkit:craftbukkit:1.18-R0.1-SNAPSHOT' // The full CraftBukkit server with no shadowing. Requires mavenLocal.
 }
