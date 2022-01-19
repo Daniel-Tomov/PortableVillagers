@@ -20,9 +20,11 @@ public class Events implements Listener {
 	public void onEntityDeath(EntityDeathEvent e) {
 		if (e.getEntity() instanceof LivingEntity) {
 			LivingEntity entity = e.getEntity();
+			Location loc = entity.getLocation();
 			if (entity.getType() == EntityType.VILLAGER) {
-				Location loc = entity.getLocation();
 				entity.getKiller().getWorld().dropItem(loc, new ItemStack(Material.VILLAGER_SPAWN_EGG));
+			} else if (entity.getType() == EntityType.ZOMBIE_VILLAGER) {
+				entity.getKiller().getWorld().dropItem(loc, new ItemStack(Material.ZOMBIE_VILLAGER_SPAWN_EGG));
 			}
 		}
 	}
