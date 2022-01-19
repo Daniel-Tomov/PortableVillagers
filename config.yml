@@ -1,0 +1,10 @@
+#Enable the killing of Baby Villagers to get their spawn eggs
+#There is no setting for baby zombie villagers because they don't grow up
+killBabyVill: false
+
+#Enable the killing of Zombie Villagers to get their spawn eggs
+killZombieVill: true
+
+#Zombie villagers drop a NORMAL villager egg.
+#This lets the player skip the curing of the zombie villager
+skipCure: false

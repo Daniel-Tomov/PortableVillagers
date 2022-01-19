@@ -24,10 +24,18 @@ public class Events implements Listener {
 			LivingEntity entity = e.getEntity();
 			Ageable age = (Ageable) e.getEntity();
 			Location loc = entity.getLocation();
-			if (entity.getType() == EntityType.VILLAGER && age.isAdult()) {
-				entity.getKiller().getWorld().dropItem(loc, new ItemStack(Material.VILLAGER_SPAWN_EGG));
-			} else if (entity.getType() == EntityType.ZOMBIE_VILLAGER) {
-				entity.getKiller().getWorld().dropItem(loc, new ItemStack(Material.ZOMBIE_VILLAGER_SPAWN_EGG));
+			if (entity.getType() == EntityType.VILLAGER) {
+				if (plugin.killBabyVill()) {
+					entity.getKiller().getWorld().dropItem(loc, new ItemStack(Material.VILLAGER_SPAWN_EGG));
+				} else if (age.isAdult()) {
+					entity.getKiller().getWorld().dropItem(loc, new ItemStack(Material.VILLAGER_SPAWN_EGG));
+				}
+			} else if (entity.getType() == EntityType.ZOMBIE_VILLAGER && plugin.killZombieVill()) {
+				if (plugin.skipCure()) {
+					entity.getKiller().getWorld().dropItem(loc, new ItemStack(Material.VILLAGER_SPAWN_EGG));
+				} else {
+					entity.getKiller().getWorld().dropItem(loc, new ItemStack(Material.ZOMBIE_VILLAGER_SPAWN_EGG));
+				}
 			}
 		}
 	}

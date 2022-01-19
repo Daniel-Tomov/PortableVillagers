@@ -2,3 +2,7 @@ name: PortableVillagers
 version: 1.0
 main: me.cageydinosaur.portablevillagers.Main
 api-version: 1.18
+commands:
+  portvill:
+    usage: /portvill
+    description: Command for PortableVillagers
